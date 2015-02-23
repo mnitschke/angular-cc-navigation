@@ -10,6 +10,7 @@
 
         this.add = addElement;
         this.addChild = addChild;
+        this.getElement = getElement;
 
         /**
          * Add element (level 0)
@@ -21,11 +22,10 @@
                 throw new Error('Element with priority '+element.priority+' already exists');
             }
 
-            if(!element.hasOwnProperty('children')){
-                element.children = {};
-            }
+            element.children = {};
 
             $this.elements[element.id] = element;
+            sort($this.elements);
         }
 
         /**
@@ -45,6 +45,35 @@
 
             $this.elements[parent].children[child.id] = child;
         }
+
+        /**
+         * Get element
+         *
+         * @param {String} id
+         */
+        function getElement(id) {
+            if($this.elements[id] === undefined) {
+                throw new Error('Element with id ' + parent + 'doesn\'t exist');
+            }
+
+            return $this.elements[id];
+        }
+
+        /**
+         * Get element
+         *
+         * @param {Object} objects
+         */
+        //function sort(objects){
+        //    var sortable = [];
+        //    var fin = {};
+        //
+        //    for(var i in objects){
+        //        sortable.push([i, objects[i].priority]);
+        //    }
+        //    sortable.sort().reverse();
+        //    console.log(sortable);
+        //}
 
         this.$get = function $get() {
             return $this;
