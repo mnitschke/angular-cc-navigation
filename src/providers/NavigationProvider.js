@@ -11,7 +11,6 @@
         this.add = addElement;
         this.addChild = addChild;
         this.getElement = getElement;
-
         /**
          * Add element (level 0)
          *
@@ -25,7 +24,7 @@
             element.children = {};
 
             $this.elements[element.id] = element;
-            sort($this.elements);
+            $this.elements = sort($this.elements);
         }
 
         /**
@@ -44,6 +43,7 @@
             }
 
             $this.elements[parent].children[child.id] = child;
+            $this.elements[parent].children = sort($this.elements[parent].children);
         }
 
         /**
@@ -60,20 +60,22 @@
         }
 
         /**
-         * Get element
-         *
          * @param {Object} objects
+         * @returns {Object}
          */
-        //function sort(objects){
-        //    var sortable = [];
-        //    var fin = {};
-        //
-        //    for(var i in objects){
-        //        sortable.push([i, objects[i].priority]);
-        //    }
-        //    sortable.sort().reverse();
-        //    console.log(sortable);
-        //}
+        function sort(objects){
+            var prepare = [];
+            var fin = {};
+
+            for(var i in objects){
+                prepare.push([i, objects[i].priority]);
+            }
+            prepare.sort(function(a, b){return a[1]-b[1]}).reverse();
+            for(var x in prepare) {
+                fin[prepare[x][0]] = objects[prepare[x][0]];
+            }
+            return fin;
+        }
 
         this.$get = function $get() {
             return $this;
