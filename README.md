@@ -1,1 +1,1 @@
-# angular-cc-navigation
+# angular-cc-navigation [![Build Status](https://travis-ci.org/mnitschke/angular-cc-navigation.svg?branch=master)](https://travis-ci.org/mnitschke/angular-cc-navigation)

@@ -17,7 +17,7 @@
             $compile = _$compile_;
             $scope = $rootScope.$new();
 
-            navCtrl = $controller(CONTROLLER_NAME, {'$scope': _$scope_});
+            navCtrl = $controller(CONTROLLER_NAME, {'$scope': $scope});
 
             provider = $injector.get(PROVIDER_NAME);
         }));
@@ -27,6 +27,5 @@
         function shouldBeDefined() {
             expect(navCtrl).toBeDefined();
         }
-
     });
 });
