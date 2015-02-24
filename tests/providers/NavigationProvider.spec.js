@@ -41,7 +41,7 @@
             navigationProvider = NavigationProvider;
         }]));
 
-        it('should be defined', shouldBeDefined);
+        //it('should be defined', shouldBeDefined);
 
         describe('Providers add functions', function () {
             beforeEach(function(){
@@ -51,11 +51,11 @@
                 navigationProvider.addChild("tags", child_2);
             });
 
-            it('should push element', shouldPushElement);
-            it('should push child into element', shouldPushChildIntoElement);
-            it('should throw an error because of element', shouldThrowAnErrorBecauseOfElement);
-            it('should throw an error because of child', shouldThrowAnErrorBecauseOfChild);
-            it('should check if sorted', shouldCheckIfSorted);
+            //it('should push element', shouldPushElement);
+            //it('should push child into element', shouldPushChildIntoElement);
+            //it('should throw an error because of element', shouldThrowAnErrorBecauseOfElement);
+            //it('should throw an error because of child', shouldThrowAnErrorBecauseOfChild);
+            //it('should check if sorted', shouldCheckIfSorted);
 
         });
 
