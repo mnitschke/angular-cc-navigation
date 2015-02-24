@@ -3,15 +3,17 @@
 
     var MODULE_NAME = 'angular-cc-navigation';
 
-    function Navigator(provider){
-        var $this = this;
+    function NavigationDirective(){
+        var directive = {
+            restrict: 'E',
+            controller: MODULE_NAME+'.NavigationController',
+            controllerAs: 'navCtrl',
+            templateUrl: '/views/navigation.html'
+        };
+        return directive;
     }
-
-    Navigator.$inject = [
-        MODULE_NAME+'.$navigation'
-    ];
 
     angular
         .module(MODULE_NAME)
-        .directive('ccNav', Navigator);
+        .directive('ccNav', NavigationDirective);
 }());
