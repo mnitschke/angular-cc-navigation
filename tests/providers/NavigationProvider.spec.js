@@ -20,14 +20,14 @@
         };
 
         var child_1 = {
-            "id": "test_1",
+            "id": "child_1",
             "label": "Test",
             "href": "fo.bar",
             "priority": 200
         };
 
         var child_2 = {
-            "id": "test_2",
+            "id": "child_2",
             "label": "Test",
             "href": "fo.bar",
             "priority": 210
@@ -41,21 +41,28 @@
             navigationProvider = NavigationProvider;
         }]));
 
-        //it('should be defined', shouldBeDefined);
+        it('should be defined', shouldBeDefined);
 
         describe('Providers add functions', function () {
             beforeEach(function(){
-                navigationProvider.add(element_2);
-                navigationProvider.add(element_1);
-                navigationProvider.addChild("tags", child_1);
-                navigationProvider.addChild("tags", child_2);
+                navigationProvider
+                    .add("config", element_2);
+                navigationProvider
+                    .add("tags", element_1);
+                navigationProvider
+                    .get("tags")
+                        .add("child_1", child_1);
+                navigationProvider
+                    .get("tags")
+                        .add("child_2", child_1);
             });
 
-            //it('should push element', shouldPushElement);
-            //it('should push child into element', shouldPushChildIntoElement);
-            //it('should throw an error because of element', shouldThrowAnErrorBecauseOfElement);
-            //it('should throw an error because of child', shouldThrowAnErrorBecauseOfChild);
-            //it('should check if sorted', shouldCheckIfSorted);
+            it('should get element', shouldGetElement);
+            it('should push element', shouldPushElement);
+            it('should push child into element', shouldPushChildIntoElement);
+            it('should throw an error because of element', shouldThrowAnErrorBecauseOfElement);
+            it('should throw an error because of child', shouldThrowAnErrorBecauseOfChild);
+            it('should check if sorted', shouldCheckIfSorted);
 
         });
 
@@ -63,21 +70,25 @@
             expect(navigationProvider).toBeDefined();
         }
 
+        function shouldGetElement() {
+            expect(navigationProvider.get("tags")).toBeDefined();
+        }
+
         function shouldPushElement() {
             expect(Object.keys(navigationProvider.elements).length).toBe(2);
         }
 
         function shouldPushChildIntoElement() {
-            var element = navigationProvider.getElement("tags");
-            expect(Object.keys(element.children).length).toBe(2);
+            var element = navigationProvider.get("tags");
+            expect(Object.keys(element.elements).length).toBe(2);
         }
 
         function shouldThrowAnErrorBecauseOfElement() {
-            expect(function(){navigationProvider.add(element_1)}).toThrowError("Element with priority 205 already exists");
+            expect(function(){navigationProvider.add("tags",element_1)}).toThrowError("Element with priority 205 already exists");
         }
 
         function shouldThrowAnErrorBecauseOfChild() {
-            expect(function(){navigationProvider.addChild("tags", child_1)}).toThrowError("tags already have child with priority 200");
+            expect(function(){navigationProvider.get("tags").add("child_1", child_1)}).toThrowError("Element with priority 200 already exists");
         }
 
         function shouldCheckIfSorted() {

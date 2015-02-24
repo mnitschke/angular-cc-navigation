@@ -8,61 +8,41 @@
 
         this.elements = {};
 
-        this.add = addElement;
-        this.addChild = addChild;
-        this.getElement = getElement;
+        this.add = add;
+        this.get = get;
+
         /**
-         * Add element (level 0)
-         *
+         * @param {String} id
          * @param {Object} element
          */
-        function addElement(element){
-            if($this.elements[element.id] !== undefined) {
+        function add(id, element){
+            if($this.elements[id] !== undefined) {
                 throw new Error('Element with priority '+element.priority+' already exists');
             }
 
-            element.children = {};
+            element.elements = new NavigationProvider();
 
-            $this.elements[element.id] = element;
+            $this.elements[id] = element;
             $this.elements = sort($this.elements);
+
+            return $this.elements[id].elements;
         }
 
         /**
-         * Add child (level 1)
-         *
-         * @param {String} parent
-         * @param {Object} child
-         */
-        function addChild(parent, child){
-            if($this.elements[parent] === undefined) {
-                throw new Error('Element with id ' + parent + 'doesn\'t exist');
-            }
-
-            if($this.elements[parent].children[child.id] !== undefined) {
-                throw new Error(parent+' already have child with priority '+child.priority);
-            }
-
-            $this.elements[parent].children[child.id] = child;
-            $this.elements[parent].children = sort($this.elements[parent].children);
-        }
-
-        /**
-         * Get element
-         *
          * @param {String} id
          */
-        function getElement(id) {
+        function get(id) {
             if($this.elements[id] === undefined) {
                 throw new Error('Element with id ' + parent + 'doesn\'t exist');
             }
 
-            return $this.elements[id];
+            return $this.elements[id].elements;
         }
 
-        /**
-         * @param {Object} objects
-         * @returns {Object}
-         */
+        this.$get = function $get() {
+           return $this;
+        };
+
         function sort(objects){
             var prepare = [];
             var fin = {};
@@ -77,9 +57,6 @@
             return fin;
         }
 
-        this.$get = function $get() {
-            return $this;
-        }
     }
 
     angular
