@@ -11,7 +11,7 @@
         MODULE_NAME+'.$navigation'
     ];
 
-    anglar
+    angular
         .module(MODULE_NAME)
         .directive('ccNav', Navigator);
 }());
