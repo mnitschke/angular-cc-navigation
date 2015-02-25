@@ -3,9 +3,16 @@
 
     var MODULE_NAME = 'angular-cc-navigation';
 
-    function NavigationController(scope, provider) {
-        var $this = this;
+    /**
+     * @namespace angular-cc-navigation
+     * @name NavigationController
+     *
+     * @param scope
+     * @param {NavigationProvider} provider
+     * @constructor
+     */
 
+    function NavigationController(scope, provider) {
         scope.elements = provider.elements;
     }
 

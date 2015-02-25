@@ -46,20 +46,28 @@
                     .add("config", element_2);
             });
 
-            it('should push', shouldPushElement);
-            it('should get elements level 0', shouldGetElementsLevel0);
-            it('should returns child', shouldReturnsChild);
+            it('should return elements from level 0', shouldGetElementsFromLevel0);
+            it('should return elements from level 1', shouldReturnElementsFromLevel1);
+            it('should return children from tags element', shouldReturnChildrenFromTagsElement);
 
-            function shouldPushElement(){
-                expect(provider.elements.length).toBe(2);
-            }
-
-            function shouldGetElementsLevel0() {
+            function shouldGetElementsFromLevel0() {
                 expect(scope.elements.length).toBe(2);
             }
 
-            function shouldReturnsChild() {
-                expect(scope.elements[0].children.elements.length).toBe(1);
+            function shouldReturnElementsFromLevel1() {
+                var counter = 0;
+                for(var i in scope.elements){
+                    counter += scope.elements[i].children.elements.length;
+                }
+                expect(counter).toBe(1);
+            }
+
+            function shouldReturnChildrenFromTagsElement() {
+                for(var i in scope.elements){
+                    if(scope.elements[i].id === "tags"){
+                        expect(scope.elements[i].children.elements.length).toBe(1);
+                    }
+                }
             }
         });
     });

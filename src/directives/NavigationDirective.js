@@ -3,6 +3,13 @@
 
     var MODULE_NAME = 'angular-cc-navigation';
 
+    /**
+     * @namespace angular-cc-navigation
+     * @name NavigationDirective
+     *
+     * @constructor
+     */
+
     function NavigationDirective(){
         var directive = {
             restrict: 'E',

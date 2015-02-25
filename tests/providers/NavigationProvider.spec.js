@@ -54,11 +54,11 @@
             });
 
             it('should get element', shouldGetElement);
-            it('should push element', shouldPushElement);
+            it('should push element into level 0', shouldPushElementIntoLevel0);
             it('should push child into element', shouldPushChildIntoElement);
             it('should throw an error because of element', shouldThrowAnErrorBecauseOfElement);
             it('should throw an error because of child', shouldThrowAnErrorBecauseOfChild);
-            it('should check if sorted', shouldCheckIfSorted);
+            it('should check if sorted properly', shouldCheckIfSortedProperly);
 
         });
 
@@ -70,7 +70,7 @@
             expect(navigationProvider.get("tags")).toBeDefined();
         }
 
-        function shouldPushElement() {
+        function shouldPushElementIntoLevel0() {
             expect(navigationProvider.elements.length).toBe(2);
         }
 
@@ -87,7 +87,7 @@
             expect(function(){navigationProvider.get("tags").add("child_1", child_1)}).toThrowError("Element with priority 200 already exists");
         }
 
-        function shouldCheckIfSorted() {
+        function shouldCheckIfSortedProperly() {
             for (var i = 0; i < navigationProvider.elements.length-1; i++) {
                 expect(navigationProvider.elements[i].priority).toBeGreaterThan(navigationProvider.elements[i+1].priority);
             }

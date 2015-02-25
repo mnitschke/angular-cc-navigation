@@ -3,6 +3,13 @@
 
     var MODULE_NAME = 'angular-cc-navigation';
 
+    /**
+     * @namespace angular-cc-navigation
+     * @name NavigationProvider
+     *
+     * @constructor
+     */
+
     function NavigationProvider(){
         var $this = this;
 
@@ -14,8 +21,8 @@
         /**
          * @param {String} id
          * @param {Object} element
+         * @returns {NavigationProvider}
          */
-
         function add(id, element){
             for(var el in $this.elements){
                 if($this.elements[el].id === id) {
@@ -39,6 +46,7 @@
 
         /**
          * @param {String} id
+         * @returns {NavigationProvider}
          */
         function get(id) {
             for(var el in $this.elements){
