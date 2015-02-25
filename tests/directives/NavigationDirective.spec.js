@@ -42,6 +42,8 @@
 
         it('should get all ul', shouldGetAllUl);
         it('should get all li', shouldGetAllLi);
+        it('should get li from level 0', shouldGetLiFromLevel0);
+        it('should get li from level 1', shouldGetLiFromLevel1);
 
         function shouldGetAllUl() {
             var ul = element.find('ul');
@@ -51,6 +53,16 @@
         function shouldGetAllLi() {
             var li = element.find('li');
             expect(li.length).toBe(3);
+        }
+
+        function shouldGetLiFromLevel0() {
+            var li = angular.element(element[0].querySelector('ul#cc-navigation')).children("li");
+            expect(li.length).toBe(2);
+        }
+
+        function shouldGetLiFromLevel1() {
+            var li = angular.element(element[0].querySelector('ul.cc-children')).children("li");
+            expect(li.length).toBe(1);
         }
     });
 }());

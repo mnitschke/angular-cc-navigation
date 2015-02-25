@@ -1,10 +1,10 @@
-<ul class="sidebar-nav" id="sidebar">
-    <div  ng-repeat="element in elements">
-        <li><a href="{{element.href}}">{{element.label}}</a></li>
-        <ul ng-if="element.children.elements.length">
-            <div  ng-repeat="el in element.children.elements">
-                <li><a href="{{el.href}}">{{el.label}}</a></li>
-            </div>
+<ul id="cc-navigation">
+    <li ng-repeat="element in elements">
+        <a href="{{element.href}}">{{element.label}}</a>
+        <ul ng-if="element.children.elements.length" class="cc-children">
+            <li ng-repeat="el in element.children.elements">
+                <a href="{{el.href}}">{{el.label}}</a>
+            </li>
         </ul>
-    </div>
+    </li>
 </ul>
