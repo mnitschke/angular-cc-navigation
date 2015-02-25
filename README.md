@@ -25,7 +25,7 @@ bower install angular-cc-navigation
 
 and paste
 ```html
-<script src="bower_components/angular-cc-logger/angular-cc-navigation.min.js"></script>
+<script src="bower_components/angular-cc-navigation/angular-cc-navigation.min.js"></script>
 ```
 into your `index.html`.
 
