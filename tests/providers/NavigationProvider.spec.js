@@ -6,29 +6,25 @@
             PROVIDER_NAME = 'angular-cc-navigation.$navigation';
 
         var element_1 = {
-            "id": "tags",
             "label": "Tags",
             "href": "fo.bar",
             "priority": 205
         };
 
         var element_2 = {
-            "id": "config",
             "label": "Conifg",
             "href": "fo.bar",
             "priority": 200
         };
 
         var child_1 = {
-            "id": "child_1",
-            "label": "Test",
+            "label": "CHILD_1",
             "href": "fo.bar",
             "priority": 200
         };
 
         var child_2 = {
-            "id": "child_2",
-            "label": "Test",
+            "label": "CHILD_2",
             "href": "fo.bar",
             "priority": 210
         };
@@ -54,7 +50,7 @@
                         .add("child_1", child_1);
                 navigationProvider
                     .get("tags")
-                        .add("child_2", child_1);
+                        .add("child_2", child_2);
             });
 
             it('should get element', shouldGetElement);
@@ -75,12 +71,12 @@
         }
 
         function shouldPushElement() {
-            expect(Object.keys(navigationProvider.elements).length).toBe(2);
+            expect(navigationProvider.elements.length).toBe(2);
         }
 
         function shouldPushChildIntoElement() {
             var element = navigationProvider.get("tags");
-            expect(Object.keys(element.elements).length).toBe(2);
+            expect(element.elements.length).toBe(2);
         }
 
         function shouldThrowAnErrorBecauseOfElement() {

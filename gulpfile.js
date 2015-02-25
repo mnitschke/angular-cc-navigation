@@ -12,14 +12,14 @@ var testFiles = [
 
 gulp.task('scripts:minified', function() {
     return gulp.src('./src/**/*.js')
-        .pipe(concat('angular-cc-logger.min.js'))
+        .pipe(concat('angular-cc-navigation.min.js'))
         .pipe(uglify())
         .pipe(gulp.dest('./'));
 });
 
 gulp.task('scripts', function() {
     return gulp.src('./src/**/*.js')
-        .pipe(concat('angular-cc-logger.js'))
+        .pipe(concat('angular-cc-navigation.js'))
         .pipe(gulp.dest('./'));
 });
 

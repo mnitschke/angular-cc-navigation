@@ -1,5 +1,10 @@
 <ul class="sidebar-nav" id="sidebar">
     <div  ng-repeat="element in elements">
         <li><a href="{{element.href}}">{{element.label}}</a></li>
+        <ul ng-if="element.children.elements.length">
+            <div  ng-repeat="el in element.children.elements">
+                <li><a href="{{el.href}}">{{el.label}}</a></li>
+            </div>
+        </ul>
     </div>
 </ul>

@@ -6,24 +6,31 @@
             PROVIDER_NAME = 'angular-cc-navigation.$navigation',
             CONTROLLER_NAME = 'angular-cc-navigation.NavigationController';
 
+        var scope, ctrl, provider;
+
         var element_1 = {
-            "id": "tags",
             "label": "Tags",
             "href": "fo.bar",
             "priority": 205
         };
 
-        var $scope, $rootScope, $injector, $controller, provider, navCtrl;
+        var element_2 = {
+            "label": "Config",
+            "href": "fo.bar",
+            "priority": 200
+        };
+
+        var child_1 = {
+            "label": "Child",
+            "href": "fo.bar",
+            "priority": 200
+        };
 
         beforeEach(module(MODULE_NAME));
 
-        beforeEach(inject(function (_$injector_, _$controller_, _$rootScope_) {
-            $injector = _$injector_;
-            $controller = _$controller_;
-            $rootScope = _$rootScope_;
-            $scope = $rootScope.$new();
-
-            navCtrl = $controller(CONTROLLER_NAME, {'$scope': $scope});
+        beforeEach(inject(function ($controller, $rootScope, $injector) {
+            scope = $rootScope;
+            ctrl = $controller(CONTROLLER_NAME, {'$scope': scope});
 
             provider = $injector.get(PROVIDER_NAME);
         }));
@@ -31,14 +38,29 @@
 
         describe('tests for data pased from provider', function(){
             beforeEach(function () {
-                provider.add("tags", element_1);
+                provider
+                    .add("tags", element_1)
+                        .add("child_1", child_1);
+
+                provider
+                    .add("config", element_2);
             });
 
+            it('should push', shouldPushElement);
             it('should get elements level 0', shouldGetElementsLevel0);
+            it('should returns child', shouldReturnsChild);
+
+            function shouldPushElement(){
+                expect(provider.elements.length).toBe(2);
+            }
 
             function shouldGetElementsLevel0() {
-                expect(Object.keys[$scope.elements].length).toBe(1);
+                expect(scope.elements.length).toBe(2);
+            }
+
+            function shouldReturnsChild() {
+                expect(scope.elements[0].children.elements.length).toBe(1);
             }
         });
     });
-});
+}());

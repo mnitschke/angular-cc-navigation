@@ -19,6 +19,7 @@ module.exports = function(config) {
         'node_modules/angular-mocks/angular-mocks.js',
         'src/navigation.js',
         'src/**/*.js',
+        'src/views/*.html',
         'tests/controllers/NavigationController.spec.js',
         'tests/**/*.spec.js'
     ],
@@ -32,8 +33,8 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
+        "src/views/navigation.html": ["ng-html2js"]
     },
-
 
     // test results reporter to use
     // possible values: 'dots', 'progress'

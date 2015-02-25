@@ -13,6 +13,7 @@
     "**/*.txt",
     "tests",
     "src",
+    "examples",
     "node_modules",
     "gulpfile.js",
     "karma.conf.js",
