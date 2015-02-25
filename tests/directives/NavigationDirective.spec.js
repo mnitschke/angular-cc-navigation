@@ -26,7 +26,7 @@
         };
 
         beforeEach(module(MODULE_NAME));
-        beforeEach(module('src/views/navigation.html'));
+        beforeEach(module('navigation.html'));
 
         beforeEach(inject(function ($rootScope, $compile, $injector) {
             scope = $rootScope;

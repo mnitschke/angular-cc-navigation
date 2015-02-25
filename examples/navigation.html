@@ -1,0 +1,10 @@
+<ul id="cc-navigation">
+    <li ng-repeat="element in elements">
+        <a href="{{element.href}}">{{element.label}}</a>
+        <ul ng-if="element.children.elements.length" class="cc-children">
+            <li ng-repeat="el in element.children.elements">
+                <a href="{{el.href}}">{{el.label}}</a>
+            </li>
+        </ul>
+    </li>
+</ul>

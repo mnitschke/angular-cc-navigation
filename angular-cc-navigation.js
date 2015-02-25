@@ -36,7 +36,7 @@
             restrict: 'E',
             controller: MODULE_NAME+'.NavigationController',
             controllerAs: 'navCtrl',
-            templateUrl: 'src/views/navigation.html'
+            templateUrl: 'navigation.html'
         };
         return directive;
     }
@@ -105,36 +105,3 @@
         .module(MODULE_NAME)
         .provider(MODULE_NAME+'.$navigation', NavigationProvider);
 }());
-
-//function sort(objects){
-//    var prepare = [];
-//    var fin = {};
-//
-//    for(var i in objects){
-//        prepare.push([i, objects[i].priority]);
-//    }
-//    prepare.sort(function(a, b){return a[1]-b[1]}).reverse();
-//    for(var x in prepare) {
-//        fin[prepare[x][0]] = objects[prepare[x][0]];
-//    }
-//    return fin;
-//}
-//function add_dep(id, element){
-//    if($this.elements[id] !== undefined) {
-//        throw new Error('Element with priority '+element.priority+' already exists');
-//    }
-//
-//    element.elements = new NavigationProvider();
-//
-//    $this.elements[id] = element;
-//    $this.elements = sort($this.elements);
-//
-//    return $this.elements[id].elements;
-//}
-//function get_dep(id) {
-//    if($this.elements[id] === undefined) {
-//        throw new Error('Element with id ' + parent + 'doesn\'t exist');
-//    }
-//
-//    return $this.elements[id].elements;
-//}

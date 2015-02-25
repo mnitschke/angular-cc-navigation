@@ -8,7 +8,7 @@
             restrict: 'E',
             controller: MODULE_NAME+'.NavigationController',
             controllerAs: 'navCtrl',
-            templateUrl: 'src/views/navigation.html'
+            templateUrl: 'navigation.html'
         };
         return directive;
     }
