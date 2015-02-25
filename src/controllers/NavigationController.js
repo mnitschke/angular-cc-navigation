@@ -7,7 +7,8 @@
 
     function NavigationController(provider) {
         var $this = this;
-        $this.elements = provider.elements;
+
+        this.elements = provider.elements;
     }
 
     angular

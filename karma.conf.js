@@ -19,6 +19,7 @@ module.exports = function(config) {
         'node_modules/angular-mocks/angular-mocks.js',
         'src/navigation.js',
         'src/**/*.js',
+        'tests/controllers/NavigationController.spec.js',
         'tests/**/*.spec.js'
     ],
 
