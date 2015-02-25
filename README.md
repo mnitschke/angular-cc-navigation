@@ -14,7 +14,7 @@ Navigation component with nice and clean interface to work with.
 
 -priority
 
-All elements from the same level (and from the same parent) are ordered by priority. Elements with the highest priority are on top of the lists. 
+All elements from the same level (and the same parent) are ordered by priority. Elements with the highest priority are on top of the lists. 
 
 ## Install
 Run
